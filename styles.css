@@ -5,6 +5,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Arial, sans-serif;
 }
 
@@ -20,7 +21,7 @@ body {
 
 /* Jumbotron Styling */
 .jumbotron {
-    background: rgba(0, 0, 0, 0.7) url('images/hero-image.jpg') center/cover;
+    background: rgba(0, 0, 0, 0.7) url('images/coverback.jpg') center/cover;
     color: white;
     padding: 100px 25px;
     margin-bottom: 0;
