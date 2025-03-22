@@ -84,19 +84,20 @@ footer {
 #pdf-preview {
     position: absolute;
     display: none;
-    width: 250px; /* Adjust width for better preview */
-    height: auto; /* Auto height to maintain aspect ratio */
+    width: 300px; /* Increased width for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 400px; /* Prevent from overflowing */
     border: 1px solid #ccc;
     background-color: #fff;
     z-index: 1000;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     transition: opacity 0.2s ease-in-out;
 }
 
 #pdf-canvas {
-    width: 100%; /* Maintain canvas to fit container */
+    width: 100%; /* Make canvas fit the preview box */
     height: auto;
     border-radius: 8px;
 }
