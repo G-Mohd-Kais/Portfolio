@@ -53,3 +53,8 @@ footer {
     color: #fff;
     padding: 10px 0;
 }
+
+#pdf-preview {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
