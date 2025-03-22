@@ -12,8 +12,10 @@ function showPreview(pdfUrl, event) {
     // Load and render the PDF
     pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
         pdf.getPage(1).then(function(page) {
-            const scale = 0.5; // Set zoom level for preview
+            const scale = 0.7; // Reduce the scale to fit preview box
             const viewport = page.getViewport({ scale: scale });
+            
+            // Set canvas dimensions to fit the container
             canvas.height = viewport.height;
             canvas.width = viewport.width;
 
