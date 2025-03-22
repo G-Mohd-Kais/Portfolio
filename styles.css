@@ -1,0 +1,54 @@
+/* styles.css */
+body {
+    background-color: #f8f9fa; /* Light background color */
+    background-image: url('images/background.jpg'); /* Add image if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+/* Customize Sections */
+#home, #projects, #skills, #resume, #contact {
+    padding: 50px 0;
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: #343a40 !important;
+}
+
+/* Jumbotron Styling */
+.jumbotron {
+    background: rgba(0, 0, 0, 0.7) url('images/hero-image.jpg') center/cover;
+    color: white;
+    padding: 100px 25px;
+    margin-bottom: 0;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Card Styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Footer Customization */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 0;
+}
