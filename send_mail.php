@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    // Gmail Configuration
+    // Your Gmail Configuration
     $to = "mohdkais730@gmail.com";  // Replace with your Gmail address
     $subject = "New Contact Form Submission";
     $body = "You have received a new message from: $email\n\nMessage:\n$message";
@@ -15,11 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send Email
     if (mail($to, $subject, $body, $headers)) {
-        echo "Message sent successfully!";
+        echo "<script>
+                alert('✅ Message sent successfully!');
+                window.location.href = 'index.html'; // Redirect to homepage or any other page
+              </script>";
     } else {
-        echo "Failed to send message. Please try again later.";
+        echo "<script>
+                alert('❌ Failed to send message. Please try again later.');
+                window.location.href = 'index.html'; // Redirect to homepage or any other page
+              </script>";
     }
 } else {
-    echo "Invalid Request!";
+    echo "<script>
+            alert('❗ Invalid Request!');
+            window.location.href = 'index.html';
+          </script>";
 }
 ?>
