@@ -1,34 +1,23 @@
-/* Global Text and Background Customization */
+/* styles.css */
 body {
-    background-color: #f8f9fa; /* Light background if image fails */
-    background-image: url('images/background.jpg'); /* Background image */
+    background-color: #f8f9fa;
+    background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Arial, sans-serif;
-    color: #ffffff; /* Global text set to white */
+    color: #212529;
 }
 
-/* Customize Sections */
+/* Section Customization */
 #home, #projects, #skills, #resume, #contact {
     padding: 50px 0;
-    color: #ffffff; /* White text for sections */
 }
 
 /* Navbar Customization */
 .navbar {
     background-color: #343a40 !important;
-}
-
-/* Navbar Link Styling */
-.nav-link {
-    color: #ffffff !important;
-    transition: color 0.2s ease-in-out;
-}
-
-.nav-link:hover {
-    color: #17a2b8 !important;
 }
 
 /* Jumbotron Styling */
@@ -43,7 +32,6 @@ body {
 .btn-primary {
     background-color: #007bff;
     border: none;
-    color: #ffffff; /* White text */
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -69,13 +57,31 @@ body {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     border-radius: 8px;
     margin-bottom: 20px;
-    background-color: #212529; /* Dark background for cards */
-    color: #f8f9fa; /* Light text for cards */
+    background-color: #ffffff;
+    color: #212529;
+    font-family: Arial, sans-serif; /* Same font as Skill Section */
 }
 
+/* Card Hover Effect */
 .card:hover {
     transform: scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Project Titles (Card Titles) */
+.card-title {
+    color: #212529 !important; /* Dark color for titles */
+    font-size: 1.25rem; /* Same font size as Skills */
+    font-weight: 600; /* Slightly bold for consistency */
+    text-shadow: none !important; /* Removed shadow */
+}
+
+/* Project Description (Card Text) */
+.card-text {
+    color: #212529 !important;
+    font-size: 1rem;
+    font-weight: normal; /* Normal weight for description */
+    text-shadow: none !important; /* No shadow */
 }
 
 /* Card Image Styling */
@@ -92,18 +98,17 @@ body {
 /* Footer Customization */
 footer {
     background-color: #343a40;
-    color: #ffffff; /* White text */
+    color: #fff;
     padding: 10px 0;
-    text-align: center;
 }
 
 /* PDF Preview Styling */
 #pdf-preview {
     position: absolute;
     display: none;
-    width: 300px; /* Increased width for better visibility */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 400px; /* Prevent from overflowing */
+    width: 300px;
+    height: auto;
+    max-height: 400px;
     border: 1px solid #ccc;
     background-color: #fff;
     z-index: 1000;
@@ -119,7 +124,7 @@ footer {
     border-radius: 8px;
 }
 
-/* Responsive Design for PDF Preview */
+/* Responsive PDF Preview */
 @media (max-width: 768px) {
     #pdf-preview {
         width: 200px;
@@ -131,12 +136,25 @@ footer {
 .form-control {
     border-radius: 5px;
     box-shadow: none;
-    background-color: #212529; /* Dark background for inputs */
-    color: #ffffff; /* White text */
-    border: 1px solid #ced4da;
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #dee2e6;
     transition: border-color 0.2s ease-in-out;
 }
 
+/* Placeholder Text Color */
+.form-control::placeholder {
+    color: #495057;
+    opacity: 0.9;
+}
+
+/* Form Label Styling */
+label {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Contact Form Input Text Fix */
 .form-control:focus {
     border-color: #007bff;
     outline: none;
@@ -145,9 +163,10 @@ footer {
 
 /* Skill List Customization */
 .list-group-item {
-    background-color: #343a40; /* Dark background */
-    color: #f8f9fa; /* Light text */
+    background-color: #ffffff;
+    color: #212529;
     border: 1px solid #dee2e6;
+    font-weight: 500;
 }
 
 /* Contact Form Button */
@@ -155,22 +174,50 @@ footer {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Heading and Section Styling */
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* Clean white text */
+/* Navbar Link Styling */
+.nav-link {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+    transition: color 0.2s ease-in-out;
 }
 
-/* Project Title and Description */
-.card-title, .card-text {
-    color: #f8f9fa;
+.nav-link:hover {
+    color: #17a2b8 !important;
 }
 
-/* Skills Section Text */
-#skills h3, #projects h3 {
-    color: #f8f9fa;
+/* Section Heading Customization */
+h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Remove text-shadow to prevent double-layer effect */
-h2, h3, h4 {
-    text-shadow: none;
+/* Skill and Section Headings */
+#skills h2, #contact h2, #resume h2, #home h2 {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Project Title Customization */
+#projects h2 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix Contact Form Text Color */
+#contact label, #contact .form-control {
+    color: #ffffff !important;
+}
+
+/* Contact Form Placeholder and Input Text Fix */
+#contact input, #contact textarea {
+    color: #ffffff !important;
+    background-color: #000000 !important;
+}
+
+/* Placeholder Fix for Dark Backgrounds */
+#contact input::placeholder, #contact textarea::placeholder {
+    color: #ccc !important;
+    opacity: 0.8;
 }
