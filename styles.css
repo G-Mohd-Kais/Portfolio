@@ -59,7 +59,7 @@ body {
     margin-bottom: 20px;
     background-color: #ffffff;
     color: #212529;
-    font-family: Arial, sans-serif; /* Same font as Skill Section */
+    font-family: Arial, sans-serif;
 }
 
 /* Card Hover Effect */
@@ -70,18 +70,18 @@ body {
 
 /* Project Titles (Card Titles) */
 .card-title {
-    color: #212529 !important; /* Dark color for titles */
-    font-size: 1.25rem; /* Same font size as Skills */
-    font-weight: 600; /* Slightly bold for consistency */
-    text-shadow: none !important; /* Removed shadow */
+    color: #212529 !important;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-shadow: none !important;
 }
 
 /* Project Description (Card Text) */
 .card-text {
     color: #212529 !important;
     font-size: 1rem;
-    font-weight: normal; /* Normal weight for description */
-    text-shadow: none !important; /* No shadow */
+    font-weight: normal;
+    text-shadow: none !important;
 }
 
 /* Card Image Styling */
@@ -104,19 +104,21 @@ footer {
 
 /* PDF Preview Styling */
 #pdf-preview {
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
-    width: 300px;
-    height: auto;
-    max-height: 400px;
+    width: 720px;
+    height: 480px;
     border: 1px solid #ccc;
     background-color: #fff;
     z-index: 1000;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    transition: opacity 0.2s ease-in-out;
+    overflow: hidden;
 }
+
 
 #pdf-canvas {
     width: 100%;
@@ -189,20 +191,27 @@ label {
 h2, h3, h4, h5, h6 {
     color: #ffffff !important;
     font-weight: 700;
+    margin-top: -40px; /* Move all section titles up slightly */
     margin-bottom: 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Move Specific Titles Upwards */
+#projects h2 {
+    margin-top: -60px !important; /* Move Projects Title more upwards */
+    color: #ffffff !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Move Resume and Contact Titles Up */
+#resume h2, #contact h2 {
+    margin-top: -50px !important;
 }
 
 /* Skill and Section Headings */
 #skills h2, #contact h2, #resume h2, #home h2 {
     color: #ffffff !important;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-/* Project Title Customization */
-#projects h2 {
-    color: #ffffff !important;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Fix Contact Form Text Color */
@@ -220,4 +229,16 @@ h2, h3, h4, h5, h6 {
 #contact input::placeholder, #contact textarea::placeholder {
     color: #ccc !important;
     opacity: 0.8;
+}
+
+/* Force Moving Titles Up with Higher Specificity */
+#projects h2, #resume h2, #contact h2 {
+    margin-top: -60px !important; /* Move these section titles up */
+    position: relative; /* Ensures correct positioning */
+    z-index: 10; /* Prevents overlapping issues */
+}
+
+/* For General Headings if Necessary */
+h2 {
+    margin-top: -50px !important; /* Force all h2 elements upwards */
 }
