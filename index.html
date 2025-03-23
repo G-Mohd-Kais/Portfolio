@@ -15,15 +15,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 
     <style>
+        /* PDF Preview Styling */
         #pdf-preview {
-            position: absolute;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: none;
-            width: 475px;
-            height: 275px;
+            width: 720px;
+            height: 480px;
             border: 1px solid #ccc;
             background-color: #fff;
             z-index: 1000;
-            overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
@@ -41,6 +44,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Certifications ">Certifications</a></li>
             <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -64,10 +68,9 @@
         <div class="col-md-4">
             <div class="card">
                 <img src="images/project1.jpg" 
-                     class="card-img-top" 
+                     class="card-img-top preview-link"
                      alt="Project 1"
-                     onmouseover="showPreview('files/project1.pdf', event)" 
-                     onmouseout="hidePreview()">
+                     data-pdf="files/project1.pdf">
                 <div class="card-body text-center">
                     <h5 class="card-title">Project 1</h5>
                     <p class="card-text">Description of the project.</p>
@@ -78,10 +81,9 @@
         <div class="col-md-4">
             <div class="card">
                 <img src="images/project2.jpg" 
-                     class="card-img-top" 
+                     class="card-img-top preview-link"
                      alt="Project 2"
-                     onmouseover="showPreview('files/project2.pdf', event)" 
-                     onmouseout="hidePreview()">
+                     data-pdf="files/project2.pdf">
                 <div class="card-body text-center">
                     <h5 class="card-title">Project 2</h5>
                     <p class="card-text">Description of the project.</p>
@@ -93,7 +95,45 @@
 </section>
 
 <!-- PDF Preview Container -->
-<div id="pdf-preview">
+<div id="pdf-preview" onmouseenter="cancelHide()" onmouseleave="hidePreview()">
+    <canvas id="pdf-canvas" style="width: 100%; height: 100%;"></canvas>
+</div>
+
+<!-- Certification Section -->
+<section id="Certifications" class="container mt-5">
+    <h2 class="text-center">Certifications</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/powerbi.jpg" 
+                     class="card-img-top preview-link"
+                     alt="Power BI Certification"
+                     data-pdf="files/powerbi.pdf">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Power BI</h5>
+                    <p class="card-text">Description of the project.</p>
+                    <a href="files/powerbi.pdf" class="btn btn-info" download>Download Project</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/tsql.jpg" 
+                     class="card-img-top preview-link"
+                     alt="T-SQL Certification"
+                     data-pdf="files/tsql.pdf">
+                <div class="card-body text-center">
+                    <h5 class="card-title">T-SQL</h5>
+                    <p class="card-text">Description of the project.</p>
+                    <a href="files/tsql.pdf" class="btn btn-info" download>Download Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PDF Preview Container -->
+<div id="pdf-preview" onmouseenter="cancelHide()" onmouseleave="hidePreview()">
     <canvas id="pdf-canvas" style="width: 100%; height: 100%;"></canvas>
 </div>
 
@@ -117,19 +157,16 @@
 <!-- Contact Section -->
 <section id="contact" class="container mt-5">
     <h2 class="text-center">Contact Me</h2>
-    <form action="send_mail.php" method="POST">
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
+    <form id="contact-form">
+        <input type="email" name="email" class="form-control mb-2" placeholder="Enter your email" required>
+        <textarea name="message" class="form-control mb-2" rows="3" placeholder="Enter your message" required></textarea>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Send</button>
     </form>
+
+    <!-- Status Message Container -->
+    <div id="message-status" class="mt-3"></div>
 </section>
-    
+
 <!-- Footer -->
 <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Mohammed. All Rights Reserved.</p>
@@ -139,57 +176,124 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
 
 <!-- JavaScript for PDF Preview -->
 <script>
-    // Show PDF preview on hover
-    function showPreview(pdfUrl, event) {
-        const preview = document.getElementById('pdf-preview');
-        const canvas = document.getElementById('pdf-canvas');
-        const ctx = canvas.getContext('2d');
+    let previewTimeout;
 
-        // Set preview position near the cursor
-        preview.style.top = `${event.pageY + 10}px`;
-        preview.style.left = `${event.pageX + 10}px`;
-        preview.style.display = 'block';
+    // Show PDF preview
+    function showPreview(pdfUrl) {
+        const preview = document.getElementById("pdf-preview");
+        const canvas = document.getElementById("pdf-canvas");
+        const ctx = canvas.getContext("2d");
 
-        // Load and render the PDF
-        pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-            pdf.getPage(1).then(function(page) {
-                const scale = 1.0; // Zoom level
-                const viewport = page.getViewport({ scale: scale });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+        preview.style.display = "block"; // Show the preview in center
 
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
+        pdfjsLib
+            .getDocument(pdfUrl)
+            .promise.then(function (pdf) {
+                pdf.getPage(1).then(function (page) {
+                    const scale = 0.75;
+                    const viewport = page.getViewport({ scale: scale });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
 
-                page.render(renderContext);
+                    const renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport,
+                    };
+
+                    page.render(renderContext);
+                });
+            })
+            .catch(function (error) {
+                console.error("Error loading PDF:", error);
             });
-        });
     }
 
-    // Hide preview on mouse out
+    // Hide preview with delay to prevent flickering
     function hidePreview() {
-        document.getElementById('pdf-preview').style.display = 'none';
+        previewTimeout = setTimeout(() => {
+            document.getElementById("pdf-preview").style.display = "none";
+        }, 200);
     }
 
-    // Smooth scroll for navbar
-    $(document).ready(function() {
-        $('a.nav-link').on('click', function(event) {
+    // Cancel hiding the preview if cursor re-enters
+    function cancelHide() {
+        clearTimeout(previewTimeout);
+    }
+
+    // =====================
+    // Event Listeners for PDF Preview
+    // =====================
+    document.querySelectorAll(".preview-link").forEach((img) => {
+        img.addEventListener("mouseenter", function () {
+            showPreview(this.dataset.pdf);
+        });
+        img.addEventListener("mouseleave", hidePreview);
+    });
+
+    // =====================
+    // Smooth Scroll for Navbar
+    // =====================
+    $(document).ready(function () {
+        $("a.nav-link").on("click", function (event) {
             if (this.hash !== "") {
                 event.preventDefault();
                 const hash = this.hash;
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 800);
+                $("html, body").animate(
+                    {
+                        scrollTop: $(hash).offset().top,
+                    },
+                    800
+                );
             }
+        });
+
+        // =====================
+        // AJAX Form Submission
+        // =====================
+        $("#contact-form").submit(function (e) {
+            e.preventDefault();
+
+            // Disable button to prevent multiple submissions
+            $("#submit-btn").attr("disabled", true).text("Sending...");
+
+            // Collect form data
+            var formData = $(this).serialize();
+
+            // Send AJAX request
+            $.ajax({
+                type: "POST",
+                url: "send_mail.php",
+                data: formData,
+                success: function (response) {
+                    $("#message-status").html(
+                        `<div class="alert alert-success">✅ ${response}</div>`
+                    );
+                    $("#contact-form")[0].reset();
+
+                    // Clear message after 5 seconds
+                    setTimeout(function () {
+                        $("#message-status").html("");
+                    }, 5000);
+                },
+                error: function () {
+                    $("#message-status").html(
+                        `<div class="alert alert-danger">❌ Failed to send message. Please try again later.</div>`
+                    );
+
+                    // Clear error after 5 seconds
+                    setTimeout(function () {
+                        $("#message-status").html("");
+                    }, 5000);
+                },
+                complete: function () {
+                    $("#submit-btn").attr("disabled", false).text("Send");
+                },
+            });
         });
     });
 </script>
-
 </body>
 </html>
