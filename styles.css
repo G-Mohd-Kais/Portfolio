@@ -15,8 +15,10 @@ body {
 }
 
 /* Navbar Customization */
-.navbar {
-    background-color: #343a40 !important;
+.nav-link {
+    color: #ffffff !important;   /* White text color */
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3); /* Light glow */
+    transition: color 0.2s ease-in-out;  /* Smooth color transition */
 }
 
 /* Jumbotron Styling */
