@@ -1,24 +1,34 @@
-/* styles.css */
+/* Global Text and Background Customization */
 body {
-    background-color: #f8f9fa; /* Light background color */
-    background-image: url('images/background.jpg'); /* Add image if needed */
+    background-color: #f8f9fa; /* Light background if image fails */
+    background-image: url('images/background.jpg'); /* Background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Arial, sans-serif;
+    color: #ffffff; /* Global text set to white */
 }
 
 /* Customize Sections */
 #home, #projects, #skills, #resume, #contact {
     padding: 50px 0;
+    color: #ffffff; /* White text for sections */
 }
 
 /* Navbar Customization */
+.navbar {
+    background-color: #343a40 !important;
+}
+
+/* Navbar Link Styling */
 .nav-link {
-    color: #ffffff !important;   /* White text color */
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3); /* Light glow */
-    transition: color 0.2s ease-in-out;  /* Smooth color transition */
+    color: #ffffff !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #17a2b8 !important;
 }
 
 /* Jumbotron Styling */
@@ -33,6 +43,7 @@ body {
 .btn-primary {
     background-color: #007bff;
     border: none;
+    color: #ffffff; /* White text */
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -44,6 +55,7 @@ body {
 .btn-info {
     background-color: #17a2b8;
     border: none;
+    color: #ffffff;
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -53,15 +65,17 @@ body {
 
 /* Card Styling */
 .card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     border-radius: 8px;
     margin-bottom: 20px;
+    background-color: #212529; /* Dark background for cards */
+    color: #f8f9fa; /* Light text for cards */
 }
 
 .card:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Card Image Styling */
@@ -78,8 +92,9 @@ body {
 /* Footer Customization */
 footer {
     background-color: #343a40;
-    color: #fff;
+    color: #ffffff; /* White text */
     padding: 10px 0;
+    text-align: center;
 }
 
 /* PDF Preview Styling */
@@ -99,7 +114,7 @@ footer {
 }
 
 #pdf-canvas {
-    width: 100%; /* Make canvas fit the preview box */
+    width: 100%;
     height: auto;
     border-radius: 8px;
 }
@@ -116,6 +131,8 @@ footer {
 .form-control {
     border-radius: 5px;
     box-shadow: none;
+    background-color: #212529; /* Dark background for inputs */
+    color: #ffffff; /* White text */
     border: 1px solid #ced4da;
     transition: border-color 0.2s ease-in-out;
 }
@@ -128,7 +145,8 @@ footer {
 
 /* Skill List Customization */
 .list-group-item {
-    background-color: #f8f9fa;
+    background-color: #343a40; /* Dark background */
+    color: #f8f9fa; /* Light text */
     border: 1px solid #dee2e6;
 }
 
@@ -137,12 +155,22 @@ footer {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Navbar Link Styling */
-.nav-link {
-    color: #ffffff !important;
-    transition: color 0.2s ease-in-out;
+/* Heading and Section Styling */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* Clean white text */
 }
 
-.nav-link:hover {
-    color: #17a2b8 !important;
+/* Project Title and Description */
+.card-title, .card-text {
+    color: #f8f9fa;
+}
+
+/* Skills Section Text */
+#skills h3, #projects h3 {
+    color: #f8f9fa;
+}
+
+/* Remove text-shadow to prevent double-layer effect */
+h2, h3, h4 {
+    text-shadow: none;
 }
