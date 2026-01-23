@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalThumbnail = document.getElementById("modalThumbnail");
   const modalDashboardImage = document.getElementById("modalDashboardImage");
 
+  modalDashboardImage.onerror = () => {
+  modalDashboardImage.src = "assets/images/placeholder.png";
+  };
+
   const prevBtn = document.getElementById("dashPrev");
   const nextBtn = document.getElementById("dashNext");
   const modalDownload = document.getElementById("modalDownload");
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modalThumbnail.src = btn.dataset.thumb || "";
 
     // Dashboard images
-    shots = JSON.parse(btn.dataset.shots || "[]");
+    shots = JSON.parse(btn.dataset.shots || "[]").filter(s => s.img);
     currentIndex = 0;
 
     if (shots.length > 0) {
