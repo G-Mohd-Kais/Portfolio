@@ -38,7 +38,7 @@ body{
   background:rgba(0, 11, 48, 0.7)!important;
 }
 .navbar-brand{
-  font-weight: 350;
+  font-weight: 300;
   letter-spacing: 0.02em;
   color: #e5e7eb;
   margin-right: auto;
@@ -191,6 +191,7 @@ body{
     linear-gradient(rgba(255,255,255,0.03) 0.5px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.03) 0.5px, transparent 1px);
   background-size:70px 77px;
+  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
   mask-image:radial-gradient(circle at center, black 45%, transparent 900%);
 }
 
@@ -216,7 +217,7 @@ body{
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   line-height: 1.05;
   margin-bottom: 16px;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -1350,7 +1351,10 @@ main {
   .hero-socials {
     margin-top: 26px;
   }
-  
+
+  .dashboard-arrow {
+    font-size: 32px;
+  }
   /* -------- EXPERIENCE -------- */
   .experience-timeline::before {
     left: 22px;
