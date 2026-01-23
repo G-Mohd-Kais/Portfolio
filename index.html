@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G Mohammed Kais | Portfolio</title>
+
+<!-- SEO -->
+<meta name="description" content="G Mohammed Kais – Analyst, CRM Specialist & Automation Thinker">
+<meta property="og:title" content="G Mohammed Kais | Portfolio">
+<meta property="og:description" content="Analyst • CRM Specialist • Automation Thinker">
+<meta property="og:image" content="assets/images/og/preview.png">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="assets/favicon/logo.png">
+
+<!-- Fonts (Readable in dark/light) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<!--CSS-->
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid px-4">
+
+    <a class="navbar-brand text-white" href="#">Portfolio</a>
+
+    <div class="theme-toggle ms-3" id="themeToggle"></div>
+
+    <button class="navbar-toggler bg-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#nav"
+      aria-controls="nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="hero" class="hero">
+<!-- Dim/blinking blobs -->
+  <div class="hero-blob dimming-blobs"></div>
+
+  <!-- Always glowing blob -->
+  <div class="hero-blob glowing-blob"></div>
+  <div class="hero-center-blob"></div>
+
+  <!-- Existing background grid -->
+  <div class="hero-bg">
+    <div class="grid-layer"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="hero-content">
+
+    <img src="assets/images/profile/profile.png" class="avatar" alt="Profile">
+
+    <p class="hero-eyebrow">
+      <span class="line"></span>
+      <span class="eyebrow-text">Hi, I'm</span>
+      <span class="line"></span>
+    </p>
+
+    <h1 class="text-bold">G Mohammed Kais</h1>
+
+    <p class="hero-sub">
+      <span class="hero-sub-prefix">I build</span>
+      <span id="typed" class="typed-text"></span>
+    </p>
+
+    <p class="hero-desc">
+      I turn operational data into reliable workflows, with experience across Google Workspace, CRM systems, and high-volume operations.
+    </p>
+
+    <!-- SOCIAL ICONS -->
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/g-mohd-kais-8b234b232/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/G-Mohd-Kais"><i class="fab fa-github"></i></a>
+      <a href="https://x.com/G_Mohd_Kais"><i class="fab fa-x-twitter"></i></a>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary"> 
+        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3v16m0 0l-5-5m5 5l5-5"
+          stroke="currentColor"
+          stroke-width="1.3"  
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        </svg>
+        View My Work
+      </a>
+      <a href="#contact" class="btn-outline">
+        <i class="fa-regular fa-envelope"></i> Get In Touch
+      </a>  
+    </div>
+
+<!-- MOUSE ICON -->
+ <a href="#projects" class="scroll-indicator">
+  <svg class="mouse-icon" viewBox="0 0 24 44" fill="none">
+    <rect x="1" y="1" width="22" height="38" rx="11"
+    stroke="currentColor" stroke-width="2"/>
+    <line x1="12" y1="10" x2="12" y2="16"
+    stroke="currentColor" stroke-width="2"
+    stroke-linecap="round"/>
+  </svg>
+</a>
+</div>
+</section>
+
+<!--Projects-->
+<section id="projects" class="projects-section">
+  <div class="projects-header">
+    <h2>Projects</h2>
+    <p>A glimpse into my recent work</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="project-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="data-analytics">Data Analytics</button>
+    <button class="filter-btn" data-filter="reporting-dashboards">Reporting & Dashboards</button>
+    <button class="filter-btn" data-filter="automation">Automation</button>
+    <button class="filter-btn" data-filter="database-sql">Database & SQL</button>
+  </div>
+
+<div class="projects-grid">
+
+  <!-- ================= PROJECT 1 ================= -->
+  <article class="project-card" data-category="reporting-dashboards">
+    <span class="project-badge">Live</span>
+
+    <img src="assets/images/projects/amazon-sales-dashboard/amazon-sales-thumb.png" alt="Dashboard">
+
+    <div class="project-content">
+      <h3>Amazon Sales & Profit Analysis</h3>
+      <p>Business performance across 2023, 2024, and 2025, enabling clear year-over-year profit analysis.</p>
+
+      <!-- TOOLS -->
+       <div class="project-tools">
+        <img src="assets/icons/powerbi.png" alt="Power BI">
+        <img src="assets/icons/excel.png" alt="Excel">
+      </div>
+      
+      <button type="button" class="project-view-btn"
+      data-title="Amazon Sales & Profit Analysis"
+      data-category="Data Analytics Project"
+      data-thumb="assets/images/projects/amazon-sales-dashboard/amazon-sales-thumb.png"
+      data-short="This report presents a clear and interactive overview of Amazon’s performance across 2023–2025, focusing on key KPIs such as net profit, total sales, costs, discounts, and returns. It effectively highlights year-over-year profit trends, quarterly growth, and regional performance, with flexible filters enabling quick, data-driven insights at both summary and detailed levels."
+      data-short-2="It highlights year-over-year profit trends, quarterly growth, and regional performance, with flexible filters enabling quick, data-driven insights at both summary and detailed levels."
+      data-long="Live publishing is unavailable due to Power BI Service access limitations. To explore this dashboard, click Download to get the dataset and build steps. Thanks!"
+      data-tools="assets/images/icons/powerbi.png,assets/images/icons/excel.png"
+      data-shots='[
+      {"img":"assets/images/projects/amazon-sales-dashboard/shot-1.png","desc":"Overall sales and revenue performance overview"},
+      {"img":"images/sales-shot-2.jpg","desc":"Region-wise and product-wise sales analysis"},
+      {"img":"images/sales-shot-3.jpg","desc":"Executive KPI summary dashboard"}
+      ]'
+      data-download="Put Link">
+      View
+    </button>
+   </div>
+ </article>
+
+  <!-- ================= PROJECT 2 ================= -->
+  <article class="project-card" data-category="reporting-dashboards">
+    <span class="project-badge">Live</span>
+
+    <img src="images/revenue-insights-thumb.jpg" alt="Power BI Revenue Insights">
+
+    <div class="project-content">
+      <h3>Credit Card Transaction Analysis</h3>
+      <p>csaascas</p>
+
+      <div class="project-tools">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL">
+      </div>
+
+      <button class="project-view-btn"
+        data-title="Power BI Revenue Insights"
+        data-category="Power BI Project"
+        data-thumb="kk.png"
+        data-short="Revenue-focused dashboard with drilldowns and performance tracking."
+        data-long="Live publishing is unavailable due to Power BI Service access limitations. To explore this dashboard, click Download to get the dataset and build steps. Thanks!"
+
+        data-tools="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+
+        data-shots='[
+          {"img":"images/revenue-shot-1.jpg","desc":"Monthly and yearly revenue trends"},
+          {"img":"images/revenue-shot-2.jpg","desc":"Profitability analysis by category"},
+          {"img":"images/revenue-shot-3.jpg","desc":"Performance KPIs and variance tracking"}
+        ]'
+        data-download="Put Link">
+        View
+      </button>
+    </div>
+  </article>
+
+  <!-- ================= PROJECT 3 ================= -->
+  <article class="project-card" data-category="reporting-dashboards">
+    <span class="project-badge">Live</span>
+
+    <img src="images/customer-segmentation-thumb.jpg" alt="Customer Segmentation Analysis">
+
+    <div class="project-content">
+      <h3>Customer Segmentation Analysis</h3>
+      <p>Behavioral and churn analysis using Tableau dashboards.</p>
+
+      <div class="project-tools">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.svg" alt="Tableau">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg" alt="Salesforce">
+      </div>
+
+      <button class="project-view-btn"
+        data-title="Customer Segmentation Analysis"
+        data-category="Tableau Project"
+        data-thumb="kk.png"
+        data-short="Customer behavior and churn analysis using interactive Tableau dashboards."
+        data-long="This project segments customers based on purchasing behavior, frequency, and churn risk. Tableau dashboards were designed to help stakeholders identify high-value and at-risk customers."
+
+        data-tools="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.svg,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg"
+
+        data-shots='[
+          {"img":"images/customer-shot-1.jpg","desc":"Customer segmentation overview"},
+          {"img":"images/customer-shot-2.jpg","desc":"Churn probability analysis"},
+          {"img":"images/customer-shot-3.jpg","desc":"Customer lifetime value insights"}
+        ]'
+        data-download="Put Link">
+        View
+      </button>
+    </div>
+  </article>
+
+  <!-- ================= PROJECT 4 ================= -->
+  <article class="project-card" data-category="data-analytics">
+    <span class="project-badge">Live</span>
+
+    <img src="images/amazon-sales-thumb.jpg" alt="Dashboard">
+
+    <div class="project-content">
+      <h3>Amazon Sales</h3>
+      <p>This report presents a year-over-year comparison of Amazon's performance across 2023, 2024, and 2025, highlighting trends in net profit, total sales, costs, discounts, and returns to easily track business growth over time.</p>
+
+      <!-- TOOLS -->
+       <div class="project-tools">
+        <img src="PowerBI_twitter_OG_image-removebg-preview.png" alt="Power BI">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="Excel">
+      </div>
+      
+      <button type="button" class="project-view-btn"
+      data-title="Sales Performance Dashboard"
+      data-category="Power BI Project"
+      data-thumb="kk.png"
+      data-short="Enterprise-level Power BI dashboard for sales, finance & executive insights.Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights. Enterprise-level Power BI dashboard for sales, finance & executive insights.  "
+      data-long="This project was built to analyze revenue, profitability, growth trends, and executive KPIs using Power BI, SQL, and Excel. It supports drill-downs, slicers, and executive-level decision making."
+      data-tools="PowerBI_twitter_OG_image-removebg-preview.png,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg,https://cdn-icons-png.flaticon.com/512/732/732220.png"
+      data-shots='[
+      {"img":"amazon_store.png","desc":"Overall sales and revenue performance overview"},
+      {"img":"images/sales-shot-2.jpg","desc":"Region-wise and product-wise sales analysis"},
+      {"img":"images/sales-shot-3.jpg","desc":"Executive KPI summary dashboard"}
+      ]'
+      data-download="Put Link">
+      View
+    </button>
+   </div>
+ </article>
+
+   <!-- ================= PROJECT 4 ================= -->
+  <article class="project-card" data-category="data-analytics">
+    <span class="project-badge">Live</span>
+
+    <img src="images/amazon-sales-thumb.jpg" alt="Dashboard">
+
+    <div class="project-content">
+      <h3>Python Project</h3>
+      <p>Working on it</p>
+
+      <!-- TOOLS -->
+       <div class="project-tools">
+        <img src="assets/images/icons/powerbi.png" alt="Power BI">
+        <img src="assets/images/icons/sql.png" alt="SQL">
+        <img src="assets/images/icons/excel.png" alt="Excel">
+      </div>
+      
+      <button type="button" class="project-view-btn"
+      data-title="Sales Performance Dashboard"
+      data-category="Power BI Project"
+      data-thumb="kk.png"
+      data-short="Working on it"
+      data-long="This project was built to analyze revenue, profitability, growth trends, and executive KPIs using Power BI, SQL, and Excel. It supports drill-downs, slicers, and executive-level decision making."
+      data-tools="PowerBI_twitter_OG_image-removebg-preview.png,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg,https://cdn-icons-png.flaticon.com/512/732/732220.png"
+      data-shots='[
+      {"img":"amazon_store.png","desc":"Overall sales and revenue performance overview"},
+      {"img":"images/sales-shot-2.jpg","desc":"Region-wise and product-wise sales analysis"},
+      {"img":"images/sales-shot-3.jpg","desc":"Executive KPI summary dashboard"}
+      ]'
+      data-download="Put Link">
+      View
+    </button>
+   </div>
+ </article>
+
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="modal fade" id="projectModal" tabindex="-1">
+  <div class="modal-dialog modal-xxl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+
+      <!-- HEADER -->
+      <div class="modal-header border-0">
+        <div>
+          <span class="badge bg-primary mb-2" id="modalCategory"></span>
+          <h3 class="mb-0" id="modalTitle"></h3>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body">
+
+        <!-- ===== TOP SECTION ===== -->
+        <div class="row align-items-start mb-2">
+
+          <!-- LEFT -->
+          <div class="col-lg-6">
+            <p class="modal-short-desc" id="modalShortDesc"></p>
+            <p class="modal-short-desc" id="modalShortDesc2"></p>
+
+            <h6 class="mt-3">Tools</h6>
+            <div id="modalTools" class="d-flex gap-3 flex-wrap"></div>
+          </div>
+
+          <!-- RIGHT → THUMBNAIL -->
+          <div class="col-lg-6 text-center">
+            <img
+              id="modalThumbnail"
+              class="img-fluid rounded"
+              style="max-height:260px"
+              alt="Project Thumbnail">
+          </div>
+
+        </div>
+
+        <hr class="opacity-25">
+
+        <!-- ===== DASHBOARD ===== -->
+        <h4 class="mt-4 text-center dashboard-title">Dashboard</h4>
+
+        <div class="dashboard-preview position-relative mt-3 mx-auto">
+
+          <button class="dashboard-arrow left" id="dashPrev">←</button>
+
+          <img
+            id="modalDashboardImage"
+            alt="Dashboard Preview">
+
+          <button class="dashboard-arrow right" id="dashNext">→</button>
+
+        </div>
+
+        <p class="text-muted mt-4" id="modalLongDesc"></p>
+
+        <div class="text-center mt-4">
+          <a
+            id="modalDownload"
+            class="btn btn-outline-light px-4"
+            target="_blank">
+            Download
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TECH STACK SECTION -->
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+    <h2 class="skills-title text-bold">Tech Stack</h2>
+    <p class="skills-subtitle">Technologies I use to build things</p>
+
+    <!-- LANGUAGES -->
+    <div class="skills-group">
+      <span class="skills-group-title text-semibold">LANGUAGES</span>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="assets/icons/excelvba.png" alt="Macros">
+          <p>VBA Macros</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/sql.png" alt="SQL">
+          <p>SQL</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/python.png" alt="Python">
+          <p>Python</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="skills-group">
+      <span class="skills-group-title text-semibold">TOOLS</span>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="assets/icons/excel.png" alt="Google Sheets">
+          <p>Google Sheets/ Excel</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/powerbi.png" alt="Power BI">
+          <p>Power BI</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/tableau.png" alt="Tableau">
+          <p>Tableau</p>
+        </div>
+        
+        <div class="skill-card">
+          <img src="assets/icons/mysql.png" alt="MySQL">
+          <p>MySQL</p>
+        </div>
+        
+        <div class="skill-card">
+          <img src="assets/icons/selenium.png" alt="Selenium">
+          <p>Selenium</p>
+        </div>
+        
+        <div class="skill-card">
+          <img src="assets/icons/vs-code.png" alt="VS Code">
+          <p>VS Code</p>
+        </div>
+        
+        <div class="skill-card">
+          <img src="assets/icons/bigquery.png" alt="BigQuery">
+          <p>BigQuery</p>
+        </div>         
+      </div>
+    </div>
+
+    <!-- Platforms & Systems -->
+    <div class="skills-group">
+      <span class="skills-group-title text-semibold">PLATFORMS AND SYSTEMS</span>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="assets/icons/google-workspace.png" alt="Google Workspace">
+          <p>Google Workspace</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/salesforce.png" alt="Salesforce">
+          <p>Salesforce</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/kerrigan.png" alt="Kerrigan">
+          <p>Kerrigan</p>
+        </div>
+
+       <div class="skill-card">
+          <img src="assets/icons/cloud-connect.png" alt="Cloud Connect">
+          <p>Cloud Connect</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/zoominfo.png" alt="ZoomInfo">
+          <p>ZoomInfo</p>
+        </div>
+
+        <div class="skill-card">
+          <img src="assets/icons/billy-ics.png" alt="Billy ICS">
+          <p>Billy ICS</p>
+        </div>        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE + EDUCATION WRAPPER -->
+<section class="timeline-wrapper">
+
+  <!--Experience-->
+  <section id="experience" class="experience-section">
+    <h2 class="experience-title">Experience</h2>
+
+    <div class="experience-timeline">
+
+      <!-- ITEM -->
+      <div class="experience-item">
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-header">
+            <h4>Specialist - Data Entry and Validation</h4>
+            <span class="date">July 2025 – Present</span>
+          </div>
+          <span class="company">Regalix India Pvt Ltd (MarketStar) </span>
+          <p>•	Created $1M+ in sales opportunities for team via lead validation and data enrichment within short period.</p>
+          <p>•	Validated 30K+ firm, covering 100K+ contact records using ZoomInfo, Kerrigan, Billy ICS and Salesforce.</p>
+          <p>•	Ensured accurate lead mapping and account segmentation to improve sales targeting.</p>
+          <p>•	Supported global data operations through rotational shifts, ensuring timely and accurate delivery.</p>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="experience-item">
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-header">
+            <h4>Senior Process Associate</h4>
+            <span class="date">March 2023 – July 2025</span>
+          </div>
+          <span class="company">Evaluationz India Pvt Ltd</span>
+          <p>•	Improved data accuracy to 95%+ from Amazon by consolidating and validating raw operational data on a daily basis.</p>
+          <p>•	Automated repetitive reporting tasks using Excel formulas and macros, significantly reducing manual effort.</p>
+          <p>•	Exceeded performance targets by achieving 112%, delivered 50K+ quality checked outputs within defined SLAs.</p>
+          <p>•	Managed CRM data operations, including data validation, billing support, audits to ensure client compliance.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!--Education-->
+  <section id="education" class="experience-section">
+    <h2 class="experience-title">Education</h2>
+
+    <div class="experience-timeline">
+
+      <div class="experience-item">
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10L12 4 2 10l10 6 10-6z"/>
+              <path d="M6 12v5c0 .6 2.7 3 6 3s6-2.4 6-3v-5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-header">
+            <h4>Bachelor’s Degree</h4>
+            <span class="date">2018 – 2021</span>
+          </div>
+          <span class="company">Beary’s First Grade College, Kundapura / Mangalore University </span>
+          <p>Specialized in Business Operations, Financial Analysis, and Data-Driven Reporting.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
+<!-- GET IN TOUCH -->
+<section id="contact" class="contact-section">
+  <div class="container text-center">
+    <h2 class="contact-title">Get In Touch</h2>
+    <p class="contact-subtitle">Let’s build something amazing together</p>
+
+    <div class="contact-card">
+      <div class="row align-items-center g-4">
+
+        <!-- LEFT -->
+        <div class="col-md-7 text-start">
+          <h4 class="contact-heading">Connect</h4>
+          <p class="contact-text">
+            I'm always interested in hearing about new projects and opportunities.
+            Whether you're looking to hire, collaborate, or just want to say hi,
+            feel free to reach out!
+          </p>
+
+          <!-- EMAIL COPY -->
+          <div class="email-box">
+            <div class="email-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M3 7l9 6 9-6"></path>
+            </svg>
+          </div>
+          <div>
+            <small>Click to copy</small>
+            <div class="email-text">gmohammedkais@gmail.com</div>
+          </div>
+        </div>
+        <!-- BUTTON -->
+         <a href="mailto:gmohammedkais@gmail.com" class="send-btn">
+          <i class="fa-solid fa-paper-plane"></i>
+          Send a message
+        </a>
+      </div>
+      
+      <!-- RIGHT -->
+       <div class="col-md-5 text-center">
+        <p class="find-me">FIND ME ON</p>
+        <div class="contact-socials">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+        </div>
+       </div>
+    
+      </div>
+   </div>
+ </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta">
+      <h2 class="text-bold">Open to Opportunities</h2>
+      <p class="mt-3">Let’s connect and build something impactful.</p>
+      <button>Download Resume</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+
+  <!--inspired text -->
+  <!--p class="footer-inspired">This portfolio is inspired</p-->
+
+  <!-- icons -->
+  <a href="mailto:gmohammedkais@gmail.com"><i class="fa-solid fa-at"></i></a>
+  <a href="https://www.linkedin.com/in/g-mohd-kais-8b234b232/"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/G-Mohd-Kais"><i class="fab fa-github"></i></a>
+  <a href="https://www.naukri.com/"><i class="fa-solid fa-briefcase"></i></a>
+  <a href="https://www.indeed.com/"><i class="fa-solid fa-building"></i></a>
+
+  <!-- name -->
+  <p class="mt-3">&copy; 2026 G Mohammed Kais</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div id="copyToast" class="copy-toast">Copied to clipboard</div>
+
+<script src="assets/js/typed.js"></script>
+<script src="assets/js/filters.js"></script>
+<script src="assets/js/modal.js"></script>
+<script src="assets/js/copy-email.js"></script>
+
+</body>
+</html>
