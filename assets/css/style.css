@@ -81,7 +81,7 @@ body{
     radial-gradient(300px circle at 7% 57%, rgba(113, 152, 236, 0.22), transparent 80%),
     radial-gradient(300px circle at 90% 65%, rgba(9, 186, 136, 0.18), transparent 90%);
   
-  animation: blobGlow 2s ease-in-out infinite; /* dim/on cycle */
+  animation: blobGlow 2s ease-in-out infinite;
 }
 
 /* ===== Always glowing blob ===== */
@@ -120,19 +120,19 @@ body{
 
   filter: blur(90px);
 
-  z-index: 1;          /* above animated blobs */
+  z-index: 1;
   pointer-events: none;
 }
 
 /* ===== Animations ===== */
 @keyframes blobGlow {
-  0%, 100% { opacity: 1; }   /* fully visible */
-  50% { opacity: 0.5; }        /* completely dim */
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes blobPulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 1.05; transform: scale(1.02); } /* tiny glow effect */
+  50% { opacity: 1.05; transform: scale(1.02); }
 }
 
 .hero {
@@ -145,7 +145,7 @@ body{
   justify-content: center;
   overflow: hidden;
 
-  background: #00030f; /* fallback color */
+  background: #00030f;
 }
 
 .hero-eyebrow {
@@ -201,7 +201,7 @@ body{
   z-index: 2;
   text-align: center;
 
-  max-width: 48rem;      /* EXACT HugoBlox feel */
+  max-width: 48rem;
   margin: 0 auto;
 
   display: flex;
@@ -222,10 +222,10 @@ body{
 }
 
 .hero-sub {
-  font-size: 1.8rem;        /* taller */
-  font-weight: 100;         /* thin */
+  font-size: 1.8rem;
+  font-weight: 100;
   line-height: 1.75;
-  margin-bottom: 40px;      /*to put gap below I build */
+  margin-bottom: 40px;
   color: #cbd5e1;
   text-align: center;
 }
@@ -238,8 +238,8 @@ body{
 /* loop words */
 .hero-sub span,
 .typed-text {
-  font-weight: 100;         /* slightly stronger */
-  color: #6aaaf8;           /* accent blue */
+  font-weight: 100;
+  color: #6aaaf8;
 }
 
 .hero-desc {
@@ -488,8 +488,8 @@ html { scroll-behavior: smooth; }
 
 .project-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Live badge */
@@ -622,7 +622,9 @@ html { scroll-behavior: smooth; }
 
 #modalThumbnail {
   margin-top: -5px;
-  margin-left: 100px;
+  margin-left: 0;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 /* Modal title spacing */
@@ -657,7 +659,7 @@ html { scroll-behavior: smooth; }
   margin: 0 auto;
   background: #020617;
   border-radius: 12px;
-  padding: 1px; /* thinner border */
+  padding: 1px;
   position: relative;
 }
 
@@ -741,7 +743,7 @@ html { scroll-behavior: smooth; }
 /* TECH STACK */
 .skills-section {
   background: radial-gradient(circle at top, #000106, #000106);
-  padding: 90px 20px 50px;   /* ⬅ bottom reduced */
+  padding: 90px 20px 50px;
   margin-bottom: -40px;
 }
 
@@ -770,7 +772,7 @@ html { scroll-behavior: smooth; }
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* ← THIS fixes it */
+  align-items: center;
 }
 
 .skills-group-title {
@@ -806,7 +808,7 @@ html { scroll-behavior: smooth; }
 }
 
 .skill-card {
-  width: 140px;                /* ⬅ smaller card */
+  width: 140px;
   height: 115px;
   padding: 14px 12px;
   background: rgba(29, 28, 28, 0.69);
@@ -815,17 +817,17 @@ html { scroll-behavior: smooth; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;     /* ⬅ vertical centering */
-  gap: 8px;                    /* space between icon & text */
+  justify-content: center;
+  gap: 8px;
 
   text-align: center;
-  margin: 0;                   /* VERY IMPORTANT */
+  margin: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 
 .skill-card img {
-  width: 36px;       /* ⬅ smaller icon */
+  width: 36px;
   height: 36px;
   object-fit: contain;
 }
@@ -846,7 +848,7 @@ html { scroll-behavior: smooth; }
 /* ================= EXPERIENCE ================= */
 
 .experience-section {
-  padding: 100px 5% 20px; /* reduced bottom */
+  padding: 100px 5% 20px;
 }
 
 /* Shared background for Experience + Education */
@@ -858,7 +860,7 @@ html { scroll-behavior: smooth; }
   text-align: center;
   font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 35px; /* ↓ reduced from 80px */
+  margin-bottom: 35px;
 }
 
 /* Timeline wrapper */
@@ -874,7 +876,7 @@ html { scroll-behavior: smooth; }
 }
 
 #education {
-  padding-bottom: 80px; /* adjust: 40px–120px */
+  padding-bottom: 80px;
 }
 
 /* Vertical line */
@@ -984,8 +986,7 @@ html { scroll-behavior: smooth; }
   font-size: 0.90rem;
   font-weight: 100;
   margin-bottom: 6px;
-  line-height: 1.2;
-  color: ##ffffff;
+  color: #ffffff;
   opacity: 0.8;
   line-height: 1.6;
 }
@@ -1355,7 +1356,49 @@ main {
   .dashboard-arrow {
     font-size: 32px;
   }
+
+  /* ---- MODAL THUMBNAIL MOBILE FIX ---- */
+  #modalThumbnail {
+    margin: 12px auto 0;
+    max-height: 160px;
+    display: block;
+  }
+
+  /* ---- DASHBOARD MOBILE FIX ---- */
+  .dashboard-preview {
+    width: 100%;
+    padding: 6px;
+  }
+
+  .dashboard-preview img {
+    max-height: 220px;
+  }
+
+  .dashboard-arrow.left {
+    left: 8px;
+  }
+
+  .dashboard-arrow.right {
+    right: 8px;
+  }
+
   /* -------- EXPERIENCE -------- */
+
+  .experience-card {
+    padding: 18px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+  
   .experience-timeline::before {
     left: 22px;
   }
@@ -1418,14 +1461,6 @@ main {
   #projectModal .modal-dialog {
     width: 100vw;
     margin: 0;
-  }
-
-  .dashboard-arrow.left {
-    left: 10px;
-  }
-
-  .dashboard-arrow.right {
-    right: 10px;
   }
 }
 
