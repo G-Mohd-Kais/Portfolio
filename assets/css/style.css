@@ -1358,6 +1358,7 @@ main {
   }
 
   .project-filters {
+    scroll-snap-type: x mandatory;
     display: flex;
     gap: 10px;
 
@@ -1376,6 +1377,7 @@ main {
   }
 
   .filter-btn {
+    scroll-snap-align: start;
     flex-shrink: 0;
     white-space: nowrap;
     font-size: 0.85rem;
