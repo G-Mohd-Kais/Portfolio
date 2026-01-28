@@ -1357,6 +1357,46 @@ main {
     font-size: 32px;
   }
 
+  .project-filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 0 16px 8px;
+    scrollbar-width: none;      /* Firefox */
+  }
+
+  .project-filters::-webkit-scrollbar {
+    display: none;              /* Chrome */
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .skills-group-title {
+    text-align: center;
+    letter-spacing: 0.18em;   /* reduced from desktop */
+    font-size: 0.8rem;
+    margin-bottom: 18px;
+  }
+
+  .skills-group-title::before,
+  .skills-group-title::after {
+    display: none;            /* hide side lines on mobile */
+  }
+
+  .skill-card {
+    border-radius: 14px;
+    padding: 16px 10px;
+  }
+
+  .skill-card p {
+    font-size: 0.9rem;
+  }
+  
   /* ---- MODAL THUMBNAIL MOBILE FIX ---- */
   #modalThumbnail {
     margin: 12px auto 0;
