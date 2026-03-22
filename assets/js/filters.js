@@ -21,3 +21,20 @@ filterButtons.forEach(btn => {
     });
   });
 });
+
+window.addEventListener("load", () => {
+  const container = document.querySelector(".project-filters");
+  const active = document.querySelector(".filter-btn.active");
+
+  if (container && active) {
+    const offset =
+      active.offsetLeft -
+      container.clientWidth / 2 +
+      active.clientWidth / 2;
+
+    container.scrollTo({
+      left: offset,
+      behavior: "smooth"
+    });
+  }
+});
