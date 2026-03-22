@@ -437,6 +437,11 @@ html { scroll-behavior: smooth; }
   display: none;
 }
 
+.project-filters-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .filter-btn {
   padding: 8px 18px;
   flex: 0 0 auto;
