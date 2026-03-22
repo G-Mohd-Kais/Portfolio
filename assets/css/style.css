@@ -427,7 +427,7 @@ html { scroll-behavior: smooth; }
 
   overflow-x: auto;
   white-space: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
 
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
