@@ -1,4 +1,4 @@
-html, body {
+body {
   overflow-x: hidden;
 }
 
@@ -422,13 +422,24 @@ html { scroll-behavior: smooth; }
 /* Filters */
 .project-filters {
   display: flex;
-  justify-content: center;
   gap: 12px;
   margin-bottom: 50px;
+
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: flex-start;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.project-filters::-webkit-scrollbar {
+  display: none;
 }
 
 .filter-btn {
   padding: 8px 18px;
+  flex: 0 0 auto;
   border-radius: 20px;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
