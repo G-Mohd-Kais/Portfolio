@@ -504,7 +504,7 @@ html { scroll-behavior: smooth; }
 
 .project-card img {
   width: 100%;
-  height: 100px;
+  height: 220px;
   object-fit: cover;
 }
 
