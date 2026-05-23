@@ -209,4 +209,26 @@ document.addEventListener("DOMContentLoaded", () => {
     "hidden.bs.modal",
     resetModal
   );
+
+   let touchStartX = 0;
+   let touchEndX = 0;
+   
+   document.addEventListener("touchstart", (e) => {
+      if (!e.target.closest(".dashboard-preview-wrap")) return;
+      touchStartX = e.changedTouches[0].screenX;
+   });
+   
+   document.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      
+      const swipeDistance = touchStartX - touchEndX;
+      
+      if (swipeDistance > 50) {
+         document.querySelector(".dash-arrow.right")?.click();
+      }
+      
+      if (swipeDistance < -50) {
+         document.querySelector(".dash-arrow.left")?.click();
+      }
+   });
 });
