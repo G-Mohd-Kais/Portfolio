@@ -294,7 +294,6 @@
     transition: var(--transition);
   }
 
-
   .btn-primary-custom,
   .resume-btn,
   .modal-explore-btn {
@@ -2618,6 +2617,64 @@
      height: 46px;
     }
   }
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+  padding: 20px;
+}
+
+.image-lightbox.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+
+  transition: transform 0.08s ease;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.15);
+  color: white;
+
+  font-size: 1.2rem;
+  z-index: 100000;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .lightbox-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    top: 14px;
+    right: 14px;
+  }
+}
 
   /* =========================================
    MOBILE PROJECT FIX
