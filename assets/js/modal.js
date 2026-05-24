@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let shots = [];
   let currentIndex = 0;
 
-  /* LIGHTBOX ZOOM */
+  /* ZOOM */
   let scale = 1;
   let translateX = 0;
   let translateY = 0;
@@ -39,10 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let initialPinchDistance = 0;
   let initialScale = 1;
-
-  /* MOBILE LIGHTBOX SWIPE */
-  let lightboxTouchStartX = 0;
-  let lightboxTouchEndX = 0;
 
   function resetZoom() {
     scale = 1;
@@ -108,11 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (lightbox) {
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
     });
   }
 
-  /* MOUSE WHEEL ZOOM */
+  /* DESKTOP WHEEL ZOOM */
   if (lightboxImage) {
     lightboxImage.addEventListener("wheel", (e) => {
       e.preventDefault();
@@ -127,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* DESKTOP DRAG PAN */
+  /* DESKTOP DRAG */
   if (lightboxImage) {
     lightboxImage.addEventListener("mousedown", (e) => {
       if (scale <= 1) return;
@@ -157,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* MOBILE PINCH + SWIPE LIGHTBOX */
+  /* MOBILE PINCH ZOOM */
   if (lightboxImage) {
     lightboxImage.addEventListener("touchstart", (e) => {
       if (e.touches.length === 2) {
@@ -168,13 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
         initialScale = scale;
       }
 
-      if (e.touches.length === 1) {
-        lightboxTouchStartX = e.touches[0].screenX;
-
-        if (scale > 1) {
-          startX = e.touches[0].clientX - translateX;
-          startY = e.touches[0].clientY - translateY;
-        }
+      if (e.touches.length === 1 && scale > 1) {
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
       }
     });
 
@@ -204,34 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
         translateY = e.touches[0].clientY - startY;
 
         updateZoom();
-      }
-    });
-
-    lightboxImage.addEventListener("touchend", (e) => {
-      if (scale > 1) return;
-      if (shots.length <= 1) return;
-
-      lightboxTouchEndX = e.changedTouches[0].screenX;
-
-      const swipeDistance =
-        lightboxTouchStartX - lightboxTouchEndX;
-
-      if (
-        swipeDistance > 50 &&
-        currentIndex < shots.length - 1
-      ) {
-        currentIndex++;
-        lightboxImage.src = shots[currentIndex].img;
-        resetZoom();
-      }
-
-      if (
-        swipeDistance < -50 &&
-        currentIndex > 0
-      ) {
-        currentIndex--;
-        lightboxImage.src = shots[currentIndex].img;
-        resetZoom();
       }
     });
   }
@@ -324,11 +290,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modalThumbnail.src =
       btn.dataset.thumb || PLACEHOLDER_IMAGE;
 
-    modalThumbnail.onclick = () => {
-      currentIndex = 0;
-      openLightbox(modalThumbnail.src);
-    };
-
     try {
       shots = JSON.parse(
         btn.dataset.shots || "[]"
@@ -349,13 +310,16 @@ document.addEventListener("DOMContentLoaded", () => {
     bootstrapModal.show();
   });
 
-  /* PREVIEW CLICK */
+  /* CLICK TO OPEN FULLSCREEN */
+  if (modalThumbnail) {
+    modalThumbnail.addEventListener("click", () => {
+      openLightbox(modalThumbnail.src);
+    });
+  }
+
   if (modalDashboardImage) {
     modalDashboardImage.addEventListener("click", () => {
-      openLightbox(
-        shots[currentIndex]?.img ||
-        modalDashboardImage.src
-      );
+      openLightbox(modalDashboardImage.src);
     });
   }
 
@@ -374,39 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex >= shots.length - 1) return;
       currentIndex++;
       loadDashboardImage(currentIndex);
-    });
-  }
-
-  /* MODAL PREVIEW SWIPE */
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  if (modalDashboardImage) {
-    modalDashboardImage.addEventListener("touchstart", (e) => {
-      if (e.touches.length > 1) return;
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    modalDashboardImage.addEventListener("touchend", (e) => {
-      if (scale > 1) return;
-
-      touchEndX = e.changedTouches[0].screenX;
-
-      const swipeDistance = touchStartX - touchEndX;
-
-      if (
-        swipeDistance > 50 &&
-        currentIndex < shots.length - 1
-      ) {
-        nextBtn?.click();
-      }
-
-      if (
-        swipeDistance < -50 &&
-        currentIndex > 0
-      ) {
-        prevBtn?.click();
-      }
     });
   }
 
