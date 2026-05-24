@@ -1485,7 +1485,7 @@
     display: block;
     cursor: zoom-in;
 
-    border-radius: 22px;
+    border-radius: 4px;
 
     background: transparent;
     padding: 0;
@@ -1620,7 +1620,8 @@
 
     .dashboard-image {
       width: 100%;
-      max-width: 100%;
+      max-width: 100%
+      border-radius: 4px;
       height: auto;
       max-height: 260px;
       object-fit: contain;
