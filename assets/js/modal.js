@@ -310,17 +310,21 @@ document.addEventListener("DOMContentLoaded", () => {
     bootstrapModal.show();
   });
 
-  /* CLICK TO OPEN FULLSCREEN */
-  if (modalThumbnail) {
-    modalThumbnail.addEventListener("click", () => {
-      openLightbox(modalThumbnail.src);
-    });
-  }
+  /* FULLSCREEN CLICK BINDINGS */
+  function bindImageClicks() {
+     if (modalThumbnail) {
+        modalThumbnail.style.cursor = "zoom-in";
+        modalThumbnail.onclick = () => {
+           openLightbox(modalThumbnail.src);
+        };
+     }
 
-  if (modalDashboardImage) {
-    modalDashboardImage.addEventListener("click", () => {
-      openLightbox(modalDashboardImage.src);
-    });
+     if (modalDashboardImage) {
+        modalDashboardImage.style.cursor = "zoom-in";
+        modalDashboardImage.onclick = () => {
+           openLightbox(modalDashboardImage.src);
+        };
+     }
   }
 
   /* PREV */
@@ -329,6 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex <= 0) return;
       currentIndex--;
       loadDashboardImage(currentIndex);
+      bindImageClicks();
     });
   }
 
@@ -338,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex >= shots.length - 1) return;
       currentIndex++;
       loadDashboardImage(currentIndex);
+      bindImageClicks(); 
     });
   }
 
