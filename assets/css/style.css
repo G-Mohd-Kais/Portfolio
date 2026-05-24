@@ -1620,11 +1620,13 @@
 
     .dashboard-image {
       width: 100%;
-      max-width: 100%
+      max-width: 100%;
       border-radius: 4px;
       height: auto;
       max-height: 260px;
       object-fit: contain;
+      cursor: zoom-in;
+      pointer-events: auto;
     }
 
     .modal-description,
@@ -1645,12 +1647,8 @@
     .dashboard-preview-wrap {
       width: 100%;
       overflow: hidden;
-    }
-
-    .dashboard-nav {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+      position: relative;
+      cursor: zoom-in;
     }
 
     .dash-arrow {
@@ -1660,7 +1658,6 @@
       font-size: 0.8rem;
       top: 50%;
       transform: translateY(-50%);
-      pointer-events: auto;
       z-index: 20;
     }
 
