@@ -300,6 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentIndex = 0;
     loadDashboardImage(currentIndex);
+    bindImageClicks(); 
 
     modalDownload.href =
       btn.dataset.download || "#";
