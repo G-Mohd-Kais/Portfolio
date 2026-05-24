@@ -4,7 +4,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const projectModal = document.getElementById("projectModal");
-
   if (!projectModal) return;
 
   const modalTitle = document.getElementById("modalTitle");
@@ -21,15 +20,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("dashNext");
   const modalDownload = document.getElementById("modalDownload");
 
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxClose = document.getElementById("lightboxClose");
+
   const PLACEHOLDER_IMAGE = "assets/images/placeholder.png";
 
   let shots = [];
   let currentIndex = 0;
 
-  /* =========================================
-     IMAGE FALLBACK
-  ========================================= */
+  /* LIGHTBOX ZOOM */
+  let scale = 1;
+  let translateX = 0;
+  let translateY = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
 
+  let initialPinchDistance = 0;
+  let initialScale = 1;
+
+  function resetZoom() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+
+    if (lightboxImage) {
+      lightboxImage.style.transform =
+        "translate(0px, 0px) scale(1)";
+      lightboxImage.style.cursor = "grab";
+    }
+  }
+
+  function updateZoom() {
+    lightboxImage.style.transform =
+      `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+  }
+
+  function getDistance(t1, t2) {
+    return Math.hypot(
+      t2.clientX - t1.clientX,
+      t2.clientY - t1.clientY
+    );
+  }
+
+  /* IMAGE FALLBACK */
   if (modalDashboardImage) {
     modalDashboardImage.onerror = () => {
       modalDashboardImage.src = PLACEHOLDER_IMAGE;
@@ -42,10 +77,128 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  /* =========================================
-     UPDATE ARROWS
-  ========================================= */
+  /* LIGHTBOX */
+  function openLightbox(src) {
+    if (!lightbox || !lightboxImage || !src) return;
 
+    lightboxImage.src = src;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    resetZoom();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    resetZoom();
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+
+  /* MOUSE WHEEL ZOOM */
+  if (lightboxImage) {
+    lightboxImage.addEventListener("wheel", (e) => {
+      e.preventDefault();
+
+      const delta = e.deltaY > 0 ? -0.15 : 0.15;
+      scale += delta;
+
+      if (scale < 1) scale = 1;
+      if (scale > 5) scale = 5;
+
+      updateZoom();
+    });
+  }
+
+  /* DESKTOP DRAG PAN */
+  if (lightboxImage) {
+    lightboxImage.addEventListener("mousedown", (e) => {
+      if (scale <= 1) return;
+
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+
+      lightboxImage.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+
+      updateZoom();
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+
+      if (lightboxImage) {
+        lightboxImage.style.cursor = "grab";
+      }
+    });
+  }
+
+  /* MOBILE PINCH ZOOM */
+  if (lightboxImage) {
+    lightboxImage.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 2) {
+        initialPinchDistance = getDistance(
+          e.touches[0],
+          e.touches[1]
+        );
+        initialScale = scale;
+      }
+
+      if (e.touches.length === 1 && scale > 1) {
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+      }
+    });
+
+    lightboxImage.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+
+        const currentDistance = getDistance(
+          e.touches[0],
+          e.touches[1]
+        );
+
+        scale =
+          initialScale *
+          (currentDistance / initialPinchDistance);
+
+        if (scale < 1) scale = 1;
+        if (scale > 5) scale = 5;
+
+        updateZoom();
+      }
+
+      if (e.touches.length === 1 && scale > 1) {
+        e.preventDefault();
+
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+
+        updateZoom();
+      }
+    });
+  }
+
+  /* ARROWS */
   function updateArrows() {
     if (!prevBtn || !nextBtn) return;
 
@@ -64,10 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
         : "none";
   }
 
-  /* =========================================
-     LOAD DASHBOARD IMAGE
-  ========================================= */
-
   function loadDashboardImage(index) {
     if (!shots.length) {
       modalDashboardImage.src = PLACEHOLDER_IMAGE;
@@ -79,10 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateArrows();
   }
-
-  /* =========================================
-     RESET MODAL
-  ========================================= */
 
   function resetModal() {
     shots = [];
@@ -104,18 +249,13 @@ document.addEventListener("DOMContentLoaded", () => {
     updateArrows();
   }
 
-  /* =========================================
-     OPEN MODAL
-  ========================================= */
-
+  /* OPEN MODAL */
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".project-view-btn");
-
     if (!btn) return;
 
     resetModal();
 
-    /* TEXT */
     modalTitle.textContent =
       btn.dataset.title || "Project";
 
@@ -131,104 +271,111 @@ document.addEventListener("DOMContentLoaded", () => {
     modalLongDesc.textContent =
       btn.dataset.long || "";
 
-    /* TOOLS */
     if (btn.dataset.tools) {
       const toolList = btn.dataset.tools.split(",");
 
       toolList.forEach((toolSrc) => {
         const img = document.createElement("img");
-
         img.src = toolSrc.trim();
         img.alt = "Tool";
         img.loading = "lazy";
-
         modalTools.appendChild(img);
       });
     }
 
-    /* THUMBNAIL */
     modalThumbnail.src =
       btn.dataset.thumb || PLACEHOLDER_IMAGE;
 
-    /* DASHBOARD SHOTS */
+    modalThumbnail.onclick = () => {
+      openLightbox(modalThumbnail.src);
+    };
+
     try {
       shots = JSON.parse(
         btn.dataset.shots || "[]"
       ).filter((shot) => shot.img);
-    } catch (error) {
+    } catch {
       shots = [];
-      console.error("Invalid shots JSON:", error);
     }
 
     currentIndex = 0;
-
     loadDashboardImage(currentIndex);
 
-    /* DOWNLOAD LINK */
     modalDownload.href =
       btn.dataset.download || "#";
 
-    /* OPEN */
     const bootstrapModal =
       new bootstrap.Modal(projectModal);
 
     bootstrapModal.show();
   });
 
-  /* =========================================
-     PREVIOUS
-  ========================================= */
+  /* PREVIEW CLICK */
+  if (modalDashboardImage) {
+    modalDashboardImage.addEventListener("click", () => {
+      openLightbox(modalDashboardImage.src);
+    });
+  }
 
+  /* PREV */
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       if (currentIndex <= 0) return;
-
       currentIndex--;
       loadDashboardImage(currentIndex);
     });
   }
 
-  /* =========================================
-     NEXT
-  ========================================= */
-
+  /* NEXT */
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
       if (currentIndex >= shots.length - 1) return;
-
       currentIndex++;
       loadDashboardImage(currentIndex);
     });
   }
 
-  /* =========================================
-     CLEANUP ON CLOSE
-  ========================================= */
+  /* SWIPE */
+  let touchStartX = 0;
+  let touchEndX = 0;
 
-  projectModal.addEventListener(
-    "hidden.bs.modal",
-    resetModal
-  );
-
-   let touchStartX = 0;
-   let touchEndX = 0;
-   
-   document.addEventListener("touchstart", (e) => {
-      if (!e.target.closest(".dashboard-preview-wrap")) return;
+  if (modalDashboardImage) {
+    modalDashboardImage.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 1) return;
       touchStartX = e.changedTouches[0].screenX;
-   });
-   
-   document.addEventListener("touchend", (e) => {
+    });
+
+    modalDashboardImage.addEventListener("touchend", (e) => {
+      if (scale > 1) return;
+
       touchEndX = e.changedTouches[0].screenX;
-      
+
       const swipeDistance = touchStartX - touchEndX;
-      
-      if (swipeDistance > 50) {
-         document.querySelector(".dash-arrow.right")?.click();
+
+      if (
+        swipeDistance > 50 &&
+        currentIndex < shots.length - 1
+      ) {
+        nextBtn?.click();
       }
-      
-      if (swipeDistance < -50) {
-         document.querySelector(".dash-arrow.left")?.click();
+
+      if (
+        swipeDistance < -50 &&
+        currentIndex > 0
+      ) {
+        prevBtn?.click();
       }
-   });
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeLightbox();
+    }
+  });
+
+  projectModal.addEventListener("hidden.bs.modal", () => {
+    resetModal();
+    closeLightbox();
+  });
 });
