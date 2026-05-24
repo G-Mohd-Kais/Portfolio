@@ -1474,6 +1474,7 @@
   margin: 0 auto;
 
   overflow: visible;  /* allows arrows outside */
+  cursor: zoom-in;
 }
 
 
