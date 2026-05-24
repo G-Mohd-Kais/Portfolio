@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let initialPinchDistance = 0;
   let initialScale = 1;
 
+  /* MOBILE LIGHTBOX SWIPE */
+  let lightboxTouchStartX = 0;
+  let lightboxTouchEndX = 0;
+
   function resetZoom() {
     scale = 1;
     translateX = 0;
@@ -53,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateZoom() {
+    if (!lightboxImage) return;
+
     lightboxImage.style.transform =
       `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
@@ -151,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* MOBILE PINCH ZOOM */
+  /* MOBILE PINCH + SWIPE LIGHTBOX */
   if (lightboxImage) {
     lightboxImage.addEventListener("touchstart", (e) => {
       if (e.touches.length === 2) {
@@ -162,9 +168,13 @@ document.addEventListener("DOMContentLoaded", () => {
         initialScale = scale;
       }
 
-      if (e.touches.length === 1 && scale > 1) {
-        startX = e.touches[0].clientX - translateX;
-        startY = e.touches[0].clientY - translateY;
+      if (e.touches.length === 1) {
+        lightboxTouchStartX = e.touches[0].screenX;
+
+        if (scale > 1) {
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+        }
       }
     });
 
@@ -194,6 +204,34 @@ document.addEventListener("DOMContentLoaded", () => {
         translateY = e.touches[0].clientY - startY;
 
         updateZoom();
+      }
+    });
+
+    lightboxImage.addEventListener("touchend", (e) => {
+      if (scale > 1) return;
+      if (shots.length <= 1) return;
+
+      lightboxTouchEndX = e.changedTouches[0].screenX;
+
+      const swipeDistance =
+        lightboxTouchStartX - lightboxTouchEndX;
+
+      if (
+        swipeDistance > 50 &&
+        currentIndex < shots.length - 1
+      ) {
+        currentIndex++;
+        lightboxImage.src = shots[currentIndex].img;
+        resetZoom();
+      }
+
+      if (
+        swipeDistance < -50 &&
+        currentIndex > 0
+      ) {
+        currentIndex--;
+        lightboxImage.src = shots[currentIndex].img;
+        resetZoom();
       }
     });
   }
@@ -287,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.dataset.thumb || PLACEHOLDER_IMAGE;
 
     modalThumbnail.onclick = () => {
+      currentIndex = 0;
       openLightbox(modalThumbnail.src);
     };
 
@@ -313,7 +352,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /* PREVIEW CLICK */
   if (modalDashboardImage) {
     modalDashboardImage.addEventListener("click", () => {
-      openLightbox(modalDashboardImage.src);
+      openLightbox(
+        shots[currentIndex]?.img ||
+        modalDashboardImage.src
+      );
     });
   }
 
@@ -335,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* SWIPE */
+  /* MODAL PREVIEW SWIPE */
   let touchStartX = 0;
   let touchEndX = 0;
 
