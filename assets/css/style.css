@@ -1711,7 +1711,7 @@
 
   /* SKILL CARD */
 .skill-card {
-  width: 150px;
+  width: 130px;
   min-height: 110px;
   padding: 16px 12px;
   border-radius: 18px;
@@ -2518,7 +2518,7 @@
     }
 
     .hero-avatar {
-      width: 150px;
+      width: 130px;
       height: 150px;
       margin: 0 auto;
     }
