@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let shots = [];
   let currentIndex = 0;
 
-  /* ZOOM */
+  /* LIGHTBOX ZOOM */
   let scale = 1;
   let translateX = 0;
   let translateY = 0;
@@ -53,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateZoom() {
-    if (!lightboxImage) return;
-
     lightboxImage.style.transform =
       `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
@@ -104,13 +102,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (lightbox) {
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
+      if (e.target === lightbox) closeLightbox();
     });
   }
+  
+  if (accoladeImage) {
 
-  /* DESKTOP WHEEL ZOOM */
+  accoladeImage.addEventListener(
+    "click",
+    () => {
+
+      openLightbox(
+        accoladeImage.src
+      );
+
+    }
+  );
+
+}
+
+  /* MOUSE WHEEL ZOOM */
   if (lightboxImage) {
     lightboxImage.addEventListener("wheel", (e) => {
       e.preventDefault();
@@ -125,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* DESKTOP DRAG */
+  /* DESKTOP DRAG PAN */
   if (lightboxImage) {
     lightboxImage.addEventListener("mousedown", (e) => {
       if (scale <= 1) return;
@@ -290,6 +301,10 @@ document.addEventListener("DOMContentLoaded", () => {
     modalThumbnail.src =
       btn.dataset.thumb || PLACEHOLDER_IMAGE;
 
+    modalThumbnail.onclick = () => {
+      openLightbox(modalThumbnail.src);
+    };
+
     try {
       shots = JSON.parse(
         btn.dataset.shots || "[]"
@@ -300,7 +315,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentIndex = 0;
     loadDashboardImage(currentIndex);
-    bindImageClicks(); 
 
     modalDownload.href =
       btn.dataset.download || "#";
@@ -311,21 +325,11 @@ document.addEventListener("DOMContentLoaded", () => {
     bootstrapModal.show();
   });
 
-  /* FULLSCREEN CLICK BINDINGS */
-  function bindImageClicks() {
-     if (modalThumbnail) {
-        modalThumbnail.style.cursor = "zoom-in";
-        modalThumbnail.onclick = () => {
-           openLightbox(modalThumbnail.src);
-        };
-     }
-
-     if (modalDashboardImage) {
-        modalDashboardImage.style.cursor = "zoom-in";
-        modalDashboardImage.onclick = () => {
-           openLightbox(modalDashboardImage.src);
-        };
-     }
+  /* PREVIEW CLICK */
+  if (modalDashboardImage) {
+    modalDashboardImage.addEventListener("click", () => {
+      openLightbox(modalDashboardImage.src);
+    });
   }
 
   /* PREV */
@@ -334,7 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex <= 0) return;
       currentIndex--;
       loadDashboardImage(currentIndex);
-      bindImageClicks();
     });
   }
 
@@ -344,7 +347,39 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex >= shots.length - 1) return;
       currentIndex++;
       loadDashboardImage(currentIndex);
-      bindImageClicks(); 
+    });
+  }
+
+  /* SWIPE */
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (modalDashboardImage) {
+    modalDashboardImage.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 1) return;
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modalDashboardImage.addEventListener("touchend", (e) => {
+      if (scale > 1) return;
+
+      touchEndX = e.changedTouches[0].screenX;
+
+      const swipeDistance = touchStartX - touchEndX;
+
+      if (
+        swipeDistance > 50 &&
+        currentIndex < shots.length - 1
+      ) {
+        nextBtn?.click();
+      }
+
+      if (
+        swipeDistance < -50 &&
+        currentIndex > 0
+      ) {
+        prevBtn?.click();
+      }
     });
   }
 
@@ -359,3 +394,191 @@ document.addEventListener("DOMContentLoaded", () => {
     closeLightbox();
   });
 });
+
+/* =========================================
+   ACCOLADE MODAL
+========================================= */
+
+const accoladeModal =
+  document.getElementById("accoladeModal");
+
+const accoladeCards =
+  [...document.querySelectorAll(
+    ".accolades-gallery-grid .accolade-card"
+  )];
+
+const accoladeBadge =
+  document.getElementById("accoladeBadge");
+
+const accoladeTitle =
+  document.getElementById("accoladeTitle");
+
+const accoladeImage =
+  document.getElementById("accoladeImage");
+
+const accoladeDescription =
+  document.getElementById("accoladeDescription");
+
+const accoladeIssuer =
+  document.getElementById("accoladeIssuer");
+
+const accoladeDate =
+  document.getElementById("accoladeDate");
+
+const accoladePrev =
+  document.getElementById("accoladePrev");
+
+const accoladeNext =
+  document.getElementById("accoladeNext");
+
+let accoladeIndex = 0;
+let accoladeImages = [];
+let accoladeImageIndex = 0;
+
+function loadAccolade(index) {
+
+  console.log("Loading index:", index);
+  console.log("Card:", accoladeCards[index]);
+
+  if (
+    index < 0 ||
+    index >= accoladeCards.length
+  ) {
+    console.error(
+      "Invalid accolade index:",
+      index
+    );
+    return;
+  }
+
+  const card =
+    accoladeCards[index];
+
+  accoladeBadge.textContent =
+    card.dataset.badge || "";
+
+  accoladeTitle.textContent =
+    card.dataset.title || "";
+
+try {
+
+  accoladeImages =
+    JSON.parse(
+      card.dataset.images || "[]"
+    );
+
+} catch {
+
+  accoladeImages = [];
+
+}
+
+accoladeImageIndex = 0;
+
+if (accoladeImages.length) {
+
+  accoladeImage.src =
+    accoladeImages[0];
+
+}
+
+  accoladeDescription.textContent =
+    card.dataset.description || "";
+
+  accoladeIssuer.textContent =
+    card.dataset.issuedby || "";
+
+  accoladeDate.textContent =
+    card.dataset.date || "";
+
+updateAccoladeArrows();
+}
+
+document.addEventListener("click", (e) => {
+
+  const btn =
+    e.target.closest(
+      ".accolade-view-btn"
+    );
+
+  if (!btn) return;
+
+  const clickedCard =
+    btn.closest(".accolade-card");
+
+  if (!clickedCard) return;
+
+  const title =
+    clickedCard.dataset.title;
+
+  accoladeIndex =
+    accoladeCards.findIndex(
+      card =>
+        card.dataset.title === title
+    );
+
+  if (accoladeIndex === -1) {
+    console.error(
+      "Card not found:",
+      title
+    );
+    return;
+  }
+
+  loadAccolade(accoladeIndex);
+
+  new bootstrap.Modal(
+    accoladeModal
+  ).show();
+
+});
+
+accoladePrev?.addEventListener("click", () => {
+
+  if (accoladeImageIndex <= 0) return;
+
+  accoladeImageIndex--;
+
+  accoladeImage.src =
+    accoladeImages[accoladeImageIndex];
+
+  updateAccoladeArrows();
+
+});
+
+accoladeNext?.addEventListener("click", () => {
+
+  if (
+    accoladeImageIndex >=
+    accoladeImages.length - 1
+  ) return;
+
+  accoladeImageIndex++;
+
+  accoladeImage.src =
+    accoladeImages[accoladeImageIndex];
+
+  updateAccoladeArrows();
+
+});
+
+function updateAccoladeArrows() {
+
+  if (accoladeImages.length <= 1) {
+
+    accoladePrev.style.display = "none";
+    accoladeNext.style.display = "none";
+    return;
+
+  }
+
+  accoladePrev.style.display =
+    accoladeImageIndex > 0
+      ? "flex"
+      : "none";
+
+  accoladeNext.style.display =
+    accoladeImageIndex < accoladeImages.length - 1
+      ? "flex"
+      : "none";
+}
