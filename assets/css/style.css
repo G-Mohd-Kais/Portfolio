@@ -3289,6 +3289,52 @@ html:not(.dark) body{
 }
 
 /* =========================================
+   ACCOLADE MODAL MOBILE FIX
+========================================= */
+
+@media (max-width:768px){
+
+  /* Title */
+  .accolade-modal-title{
+      font-size:1.20rem !important;
+      margin-bottom:12px !important;
+      line-height:1.2;
+  }
+
+  /* Image */
+  .accolade-modal-image{
+      margin-bottom:10px !important;
+      max-height:50vh !important;
+  }
+
+  /* Description */
+  .accolade-modal-description{
+      font-size:.82rem !important;
+      line-height:1.45 !important;
+
+      margin-top:12px !important;
+      margin-bottom:14px !important;
+
+      max-width:100%;
+      padding:0 6px;
+  }
+
+  /* Issued By / Date */
+  .accolade-modal-meta{
+      margin-top:0 !important;
+  }
+
+  .accolade-modal-meta strong{
+      font-size:.8rem;
+  }
+
+  .accolade-modal-meta span{
+      font-size:.8rem;
+  }
+
+}
+
+/* =========================================
    DARK MODE
 ========================================= */
 
