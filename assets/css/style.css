@@ -3297,7 +3297,7 @@ html:not(.dark) body{
   /* Title */
   .accolade-modal-title{
       font-size:1.20rem !important;
-      margin-bottom:12px !important;
+      margin-bottom:16px !important;
       line-height:1.2;
   }
 
