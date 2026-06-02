@@ -63,8 +63,9 @@
       <div class="nav-links">
         <a href="#hero">Home</a>
         <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="#accolades">Accolades</a>
+        <a href="#experience">Experience</a>
         <a href="#cta">Contact</a>
       </div>
 
@@ -88,8 +89,9 @@
     <div class="mobile-nav" id="mobileNav">
       <a href="#hero">Home</a>
       <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#accolades">Accolades</a>
+      <a href="#experience">Experience</a>
       <a href="#cta">Contact</a>
     </div>
   </nav>
@@ -221,27 +223,82 @@
 
 <!-- PROJECTS -->
 <section id="projects" class="projects-section">
+
   <div class="container-custom">
 
     <div class="section-heading">
-      <span class="section-label">PORTFOLIO</span>
+      <span class="section-label">HIGHLIGHTS</span>
       <h2>Featured Projects</h2>
     </div>
 
     <!-- FILTERS -->
     <div class="project-filters glass-panel">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="data-analytics">Data Analytics</button>
-      <button class="filter-btn" data-filter="reporting-dashboards">Dashboards</button>
-      <button class="filter-btn" data-filter="automation">Automation</button>
-      <button class="filter-btn" data-filter="database-sql">Database & SQL</button>
+      <button class="filter-btn homepage-filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn homepage-filter-btn" data-filter="data-analytics">Data Analytics</button>
+      <button class="filter-btn homepage-filter-btn" data-filter="reporting-dashboards">Dashboards</button>
+      <button class="filter-btn homepage-filter-btn" data-filter="automation">Automation</button>
+      <button class="filter-btn homepage-filter-btn" data-filter="database-sql">Database & SQL</button>
     </div>
 
     <!-- GRID -->
     <div class="projects-grid">
+    </div>
+  </div>
+  <div class="project-showmore-wrap">
+
+  <button
+    class="showmore-link"
+    data-bs-toggle="modal"
+    data-bs-target="#projectsGalleryModal">
+
+    Show More →
+  </button>
+
+</div>
+</section>
+
+<!-- PROJECTS Gallery -->
+
+<div
+class="modal fade"
+id="projectsGalleryModal"
+tabindex="-1">
+
+<div class="modal-dialog modal-xl">
+
+<div class="modal-content project-modal">
+
+<div class="modal-header border-0">
+
+<h2 class="accolades-gallery-title">
+All Projects
+</h2>
+
+<button
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+<div class="modal-body">
+
+    <!-- FILTERS -->
+    <div class="project-filters glass-panel">
+      <button class="filter-btn gallery-filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn gallery-filter-btn" data-filter="data-analytics">Data Analytics</button>
+      <button class="filter-btn gallery-filter-btn" data-filter="reporting-dashboards">Dashboards</button>
+      <button class="filter-btn gallery-filter-btn" data-filter="automation">Automation</button>
+      <button class="filter-btn gallery-filter-btn" data-filter="database-sql">Database & SQL</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="projects-gallery-grid">
 
       <!-- PROJECT 1 -->
-      <article class="project-card glass-panel" data-category="reporting-dashboards">
+      <article class="project-card glass-panel" data-category="reporting-dashboards"
+       data-home-all="1" 
+       data-order="1">
 
         <div class="project-image-wrap">
 
@@ -296,7 +353,9 @@
 
 
       <!-- PROJECT 2 -->
-      <article class="project-card glass-panel" data-category="data-analytics">
+      <article class="project-card glass-panel" data-category="data-analytics" 
+      data-home-all="2" 
+      data-order="1">
 
         <div class="project-image-wrap">
 
@@ -350,12 +409,127 @@
 
 
       <!-- PROJECT 3 -->
-      <article class="project-card glass-panel" data-category="data-analytics">
+      <article class="project-card glass-panel"
+      data-category="data-analytics"
+      data-home-all="3" 
+      data-order="2">
 
         <div class="project-image-wrap">
 
           <img
             src="assets/images/projects/excel-cleansed/excel-cleansing.png"
+            alt="Excel Data Cleaning"
+          />
+        </div>
+
+        <div class="project-content">
+          <h3>Data Cleaning & Standardization</h3>
+
+          <p>
+            Cleaned and standardized messy operational data using advanced
+            Excel formulas and transformation logic.
+          </p>
+
+          <div class="project-tools">
+            <img src="assets/icons/excel.png" alt="Excel">
+          </div>
+
+          <button
+            type="button"
+            class="project-view-btn"
+
+            data-title="Data Cleaning & Standardization"
+            data-category="Excel Project"
+
+            data-thumb="assets/images/projects/excel-cleansed/excel-cleansing.png"
+
+            data-short="Created a data cleaning and standardization project focused on converting messy raw datasets into structured, high-quality, analysis-ready Excel models. Using advanced Excel functions including TRIM, CLEAN, PROPER, SUBSTITUTE, VLOOKUP, and duplicate detection techniques, the project resolved inconsistencies in names, addresses, formatting, and numerical data."
+
+            data-short2=" By improving accuracy, consistency, and data integrity, this project highlights practical expertise in data preparation, quality control, and transforming raw business data into reliable reporting assets."
+
+            data-long="Use Excel desktop for best compatibility."
+
+            data-tools="assets/icons/excel.png"
+
+            data-shots='[
+              {"img":"assets/images/projects/excel-cleansed/shot-1.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-2.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-3.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-4.jpg"}
+            ]'
+
+            data-download="https://docs.google.com/spreadsheets/d/17kNJPPJTaNas8S1G-zEtIGEoMBbu8V4b/edit?usp=sharing&ouid=100364915285789579680&rtpof=true&sd=true"
+          >
+            View Project
+          </button>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 -->
+      <article class="project-card glass-panel"
+      data-category="data-analytics" 
+      data-order="3">
+
+        <div class="project-image-wrap">
+
+          <img
+            src="assets\images\projects\excel-cleansed\shot-4.jpg"
+            alt="Excel Data Cleaning"
+          />
+        </div>
+
+        <div class="project-content">
+          <h3>Data Cleaning & Standardization</h3>
+
+          <p>
+            Cleaned and standardized messy operational data using advanced
+            Excel formulas and transformation logic.
+          </p>
+
+          <div class="project-tools">
+            <img src="assets/icons/excel.png" alt="Excel">
+          </div>
+
+          <button
+            type="button"
+            class="project-view-btn"
+
+            data-title="Data Cleaning & Standardization"
+            data-category="Excel Project"
+
+            data-thumb="assets/images/projects/excel-cleansed/excel-cleansing.png"
+
+            data-short="Created a data cleaning and standardization project focused on converting messy raw datasets into structured, high-quality, analysis-ready Excel models. Using advanced Excel functions including TRIM, CLEAN, PROPER, SUBSTITUTE, VLOOKUP, and duplicate detection techniques, the project resolved inconsistencies in names, addresses, formatting, and numerical data."
+
+            data-short2=" By improving accuracy, consistency, and data integrity, this project highlights practical expertise in data preparation, quality control, and transforming raw business data into reliable reporting assets."
+
+            data-long="Use Excel desktop for best compatibility."
+
+            data-tools="assets/icons/excel.png"
+
+            data-shots='[
+              {"img":"assets/images/projects/excel-cleansed/shot-1.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-2.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-3.jpg"},
+              {"img":"assets/images/projects/excel-cleansed/shot-4.jpg"}
+            ]'
+
+            data-download="https://docs.google.com/spreadsheets/d/17kNJPPJTaNas8S1G-zEtIGEoMBbu8V4b/edit?usp=sharing&ouid=100364915285789579680&rtpof=true&sd=true"
+          >
+            View Project
+          </button>
+        </div>
+      </article>
+
+      <!-- PROJECT 5 -->
+      <article class="project-card glass-panel" 
+      data-category="data-analytics"
+      data-home-data="" >
+
+        <div class="project-image-wrap">
+
+          <img
+            src="assets\images\projects\excel-cleansed\shot-4.jpg"
             alt="Excel Data Cleaning"
           />
         </div>
@@ -404,8 +578,12 @@
       </article>
 
     </div>
-  </div>
-</section>
+</div>
+
+</div>
+
+</div>
+</div>
 
 <!-- PROJECT MODAL -->
 <div
@@ -512,6 +690,361 @@
     </div>
   </div>
 </div>
+
+<!-- ACCOLADES -->
+<section id="accolades" class="accolades-section">
+  <div class="container-custom">
+
+    <div class="section-heading">
+      <span class="section-label">ACCOLADES</span>
+      <h2>Milestones & Achievements</h2>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="project-filters glass-panel accolade-filters">
+
+  <button class="filter-btn homepage-accolade-filter-btn active"
+  data-filter="all">
+    All
+  </button>
+
+  <button class="filter-btn homepage-accolade-filter-btn"
+  data-filter="awards">
+    Awards
+  </button>
+
+  <button class="filter-btn homepage-accolade-filter-btn"
+  data-filter="milestones">
+    Milestones
+  </button>
+
+  <button class="filter-btn homepage-accolade-filter-btn"
+  data-filter="certifications">
+    Certifications
+  </button>
+
+</div>
+
+    <!-- ONLY 3 CARDS -->
+    <div class="accolades-grid">
+    </div>
+
+    <div class="accolade-showmore-wrap">
+      <button
+        class="showmore-link"
+        data-bs-toggle="modal"
+        data-bs-target="#accoladesGalleryModal"
+      >
+        Show More →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!--HOMEPAGE AND GALLERY ACCOLADE CARDS-->
+<div
+  class="modal fade"
+  id="accoladesGalleryModal"
+  tabindex="-1"
+>
+
+  <div class="modal-dialog modal-xl">
+
+    <div class="modal-content project-modal">
+
+      <div class="modal-header border-0">
+
+        <h2 class="accolades-gallery-title">
+         Milestones & Achievements
+        </h2>
+
+        <button
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <!-- FILTERS -->
+    <div class="project-filters glass-panel accolade-filters">
+      <button class="filter-btn gallery-accolade-filter-btn active"
+        data-filter="all">All</button>
+      <button class="filter-btn gallery-accolade-filter-btn"
+      data-filter="awards">Awards</button>
+      <button class="filter-btn gallery-accolade-filter-btn"
+      data-filter="milestones">Milestones</button>
+      <button class="filter-btn gallery-accolade-filter-btn"
+      data-filter="certifications">Certifications</button>
+    </div>
+
+    <!-- ONLY 3 CARDS -->
+    <div class="accolades-gallery-grid">
+
+<!-- CARD 1 -->
+<article
+  class="accolade-card glass-panel"
+
+  data-category="awards"
+  data-home-all="1"
+  data-order="1"
+
+  data-badge="Award"
+  data-title="Consistent #1 Performer"
+  data-images='[
+  "assets/images/accolades/evaluationz-annual-1.jpg",
+  "assets/images/accolades/evaluationz-annual-2.jpg",
+  "assets/images/accolades/evaluationz-quarter-1.jpg",
+  "assets/images/accolades/evaluationz-quarter-2.jpg",
+  "assets/images/accolades/evaluationz-month-1.jpg",
+  "assets/images/accolades/evaluationz-month-2.jpg"
+  ]'
+  data-description="Consistently recognized as the Top Performer (Rank #1) across multiple evaluation periods for exceptional productivity, quality, and commitment to business objectives.
+                    Achieved 1st Rank in H1 2023, H2 2024, Quarter 1 (FY 2024–25), Quarter 1 (FY 2025–26), and Monthly Performance Awards for July and August, demonstrating sustained 
+                    excellence, reliability, and outstanding contribution to organizational success."
+  data-issuedby="Evaluationz India Pvt Ltd"
+  data-date="2023-2026">
+
+  <!--Homepage Card--> 
+  <div class="accolade-image-wrap">
+    <img
+      src="assets/images/background/evaluationz-rewards.jpg"
+      alt="Rewards & Recognition">
+  </div>
+
+  <div class="accolade-content">
+
+<h3>
+  Consistent #1 Performer
+</h3>
+
+<div class="accolade-meta-row">
+
+  <span class="accolade-company">
+    Evaluationz India Pvt Ltd
+  </span>
+
+  <span class="accolade-date">
+    2023-2026
+  </span>
+
+</div>
+
+<button class="accolade-view-btn">
+  View Details
+</button>
+
+  </div>
+
+</article>
+
+<!-- CARD 2 -->
+<article
+  class="accolade-card glass-panel"
+
+  data-category="milestones"
+  data-home-all="2"
+  data-order="1"
+
+  data-badge="Milestone"
+  data-title="Client Satisfaction"
+  data-images='[
+  "assets/images/accolades/evaluationz-client-1.jpg",
+  "assets/images/accolades/evaluationz-client-2.jpg",
+  "assets/images/accolades/evaluationz-client-3.jpg"
+  ]'
+  data-description="Recognized by the Amazon WFS Client, Chairman, and Department Heads for exceptional performance,
+                   consistent productivity, and commitment to delivering high-quality results and business value."
+  data-issuedby="Amazon WFS"
+  data-date="2023">
+
+  <!--Homepage Card-->  
+  <div class="accolade-image-wrap">
+    <img
+      src="assets/images/background/client.png"
+      alt="Client">
+  </div>
+
+  <div class="accolade-content">
+
+    <h3>
+      Client Satisfaction
+    </h3>
+
+    <div class="accolade-meta-row">
+
+  <span class="accolade-company">
+    Amazon WFS
+  </span>
+
+  <span class="accolade-date">
+    2023
+  </span>
+
+</div>
+
+    <button
+      class="accolade-view-btn">
+      View Details
+    </button>
+  </div>
+
+</article>
+
+<!-- CARD 3 -->
+<article
+  class="accolade-card glass-panel"
+
+  data-category="certifications"
+  data-home-all="3"
+  data-order="1"
+
+  data-badge="Certification"
+  data-title="Advanced Power BI & T-SQL"
+  data-images='[
+  "assets/images/accolades/powerbi.jpg",
+  "assets/images/accolades/t-sql.jpg"
+  ]'
+  data-description="Completed Advanced Power BI and T-SQL courses from Infosys Springboard, gaining hands-on knowledge in dashboard development,
+                    data analysis, SQL querying, and business intelligence solutions."
+  data-issuedby="Infosys Springboard"
+  data-date="2024-2025">
+
+  <!--Homepage Card-->
+  <div class="accolade-image-wrap">
+    <img
+      src="assets/images/background/infosys.png"
+      alt="Rewards & Recognition">
+  </div>
+
+  <div class="accolade-content">
+
+    <h3>
+      Advanced Power BI & T-SQL
+    </h3>
+
+    <div class="accolade-meta-row">
+
+  <span class="accolade-company">
+    Infosys Springboard
+  </span>
+
+  <span class="accolade-date">
+    2024-2025
+  </span>
+
+</div>
+
+    <button
+      class="accolade-view-btn">
+      View Details
+    </button>
+  </div>
+
+</article>
+</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ACCOLADE MODAL -->
+
+<div
+  class="modal fade"
+  id="accoladeModal"
+  tabindex="-1"
+>
+
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content project-modal">
+
+      <div class="modal-body accolade-modal-body">
+
+        <button
+          class="btn-close accolade-close-btn"
+          data-bs-dismiss="modal">
+        </button>
+
+        <div class="accolade-badge-row">
+
+          <span
+            id="accoladeBadge"
+            class="modal-project-badge">
+          </span>
+
+        </div>
+
+        <h2
+          id="accoladeTitle"
+          class="accolade-modal-title">
+        </h2>
+
+        <div class="accolade-image-wrap">
+
+          <button
+            id="accoladePrev"
+            class="dash-arrow left">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+          </button>
+
+          <img
+            id="accoladeImage"
+            class="accolade-modal-image"
+          >
+
+          <button
+            id="accoladeNext"
+            class="dash-arrow right">
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+          </button>
+
+        </div>
+
+        <p
+          id="accoladeDescription"
+          class="accolade-modal-description">
+        </p>
+
+        <div class="accolade-modal-meta">
+
+          <div>
+
+            <strong>Issued By:</strong>
+
+            <span id="accoladeIssuer"></span>
+
+          </div>
+
+          <div>
+
+            <strong>Date:</strong>
+
+            <span id="accoladeDate"></span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <!-- SKILLS -->
 <section id="skills" class="skills-section">
   <div class="container-custom">
